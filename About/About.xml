@@ -2,7 +2,7 @@
 <ModMetaData>
 	<name>Multiplayer Wolfein Allegiance Patch</name>
 	<author>Keullaeseu</author>
-	<packageId>keullaeseu.multiplayerwolfeinallegiancepatch</packageId>
+	<packageId>keullaeseu.mp.leopoko.wolfeinallegiance</packageId>
 	<modVersion>1.0.0.0</modVersion>
 	<url>https://github.com/Keullaeseu/Multiplayer-Wolfein-Allegiance-Patch</url>
 	<description>Provides multiplayer support for the Wolfein Allegiance mod by leopoko.</description>
