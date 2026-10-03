@@ -23,23 +23,30 @@ public partial class WolfeinAllegiance
             "WolfeinAllegiance.MapComponent_EscapeIntro:SpawnPawns",
             "WolfeinAllegiance.MapComponent_EscapeIntro:DegradeEquipmentQuality",
             "WolfeinAllegiance.LordToil_FriendlyArtillery:Init",
-            "WolfeinAllegiance.QuestRewardHelper:GenerateReward",
+            "WolfeinAllegiance.QuestRewardHelper:AddItemsChoice",
+            "WolfeinAllegiance.QuestRewardHelper:AddWolfeinEquipment",
             "WolfeinAllegiance.CompUseEffect_HackDevice:DoEffect"
         ];
 
         foreach (var methodName in pushPopMethods)
         {
             var method = AccessTools.DeclaredMethod(methodName) ?? AccessTools.Method(methodName);
-            if (method == null) continue;
+            if (method == null)
+            {
+                Log.Warning($"{LogPrefix} RNG method not found: {methodName}");
+                continue;
+            }
 
             PatchingUtilities.PatchPushPopRand(method);
         }
 
-        // Prisoner-to-shuttle float menu creates Haul jobs, jobs are synced by MP core,
-        // but guard the option generator from running stale shuttle lookups in interface.
+        // Prisoner-to-shuttle float menu action captures colonist/prisoner/shuttle/transporter
+        // locals and queues a HaulToTransporter job. Must go through RegisterLambdaDelegate,
+        // not RegisterLambdaMethod, so the captured fields are synced (same rule as the
+        // Wolfein Race patch float menus: AncientUrbanRuins/GiddyUp2 pattern).
         try
         {
-            MpCompat.RegisterLambdaMethod("WolfeinAllegiance.Patch_FloatMenu_LoadPrisonerToShuttle", "Postfix", 0);
+            MpCompat.RegisterLambdaDelegate("WolfeinAllegiance.Patch_FloatMenu_LoadPrisonerToShuttle", "Postfix", 0);
         }
         catch (Exception exception)
         {

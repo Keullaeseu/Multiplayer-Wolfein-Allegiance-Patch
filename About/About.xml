@@ -13,6 +13,8 @@
 
 	<loadAfter>
 		<li>rwmt.Multiplayer</li>
+		<li>MelonDove.WolfeinRace</li>
+		<li>keullaeseu.mp.MelonDove.WolfeinRace</li>
 		<li>leopoko.wolfeinallegiance</li>
 	</loadAfter>
 
@@ -22,6 +24,16 @@
 			<displayName>Multiplayer</displayName>
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2606448745</steamWorkshopUrl>
 			<downloadUrl>https://github.com/rwmt/Multiplayer/releases/latest</downloadUrl>
+		</li>
+		<li>
+			<packageId>MelonDove.WolfeinRace</packageId>
+			<displayName>Wolfein Race</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/3473140562</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>keullaeseu.mp.MelonDove.WolfeinRace</packageId>
+			<displayName>Multiplayer Wolfein Race Patch</displayName>
+			<downloadUrl>https://github.com/Keullaeseu/Multiplayer-Wolfein-Race-Patch/releases/latest</downloadUrl>
 		</li>
 		<li>
 			<packageId>leopoko.wolfeinallegiance</packageId>

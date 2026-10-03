@@ -42,16 +42,6 @@ public partial class WolfeinAllegiance
             {
                 Log.Warning($"{LogPrefix} TriggerDeparture not found on VictoryShuttleTracker");
             }
-
-            // Register gizmo lambda so clicking depart syncs (captures info struct).
-            try
-            {
-                MpCompat.RegisterLambdaMethod("WolfeinAllegiance.Patch_VictoryShuttleGizmos", "Postfix", 0);
-            }
-            catch (Exception exception)
-            {
-                Log.Warning($"{LogPrefix} Could not register victory gizmo lambda: {exception}");
-            }
         }
         else
         {

@@ -14,6 +14,8 @@ This mod is designed to improve multiplayer synchronization when playing with th
 - [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077)
 - RimWorld Multiplayer
   - [GitHub version](https://github.com/rwmt/Multiplayer) or [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2606448745) version
+- [Wolfein Race](https://steamcommunity.com/sharedfiles/filedetails/?id=3473140562)
+- [Multiplayer Wolfein Race Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Race-Patch/releases/latest)
 - [Wolfein Allegiance](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233)
 
 The host and every connected player must use compatible versions of all required mods.
@@ -26,12 +28,14 @@ Subscribe to the required mods and add them to your RimWorld mod list in the fol
 
 1. Harmony
 2. Core
-3. Royalty, Ideology, Biotech, and Anomaly, if applicable
+3. Royalty, Ideology, Biotech, Anomaly, and Odyssey, if applicable
 4. RimWorld Multiplayer
-5. [Wolfein Allegiance](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233)
-6. [Multiplayer Wolfein Allegiance Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Allegiance-Patch/releases/latest)
+5. [Wolfein Race](https://steamcommunity.com/sharedfiles/filedetails/?id=3473140562)
+6. [Multiplayer Wolfein Race Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Race-Patch/releases/latest)
+7. [Wolfein Allegiance](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233)
+8. [Multiplayer Wolfein Allegiance Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Allegiance-Patch/releases/latest)
 
-The patch should load after both RimWorld Multiplayer and [Wolfein Allegiance](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233).
+The patch should load after RimWorld Multiplayer, Wolfein Race, Multiplayer Wolfein Race Patch, and [Wolfein Allegiance](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233).
 
 ### Manual Installation
 
@@ -46,6 +50,8 @@ The patch should load after both RimWorld Multiplayer and [Wolfein Allegiance](h
 All players should have the following mods installed and enabled:
 
 - RimWorld Multiplayer
+- [Wolfein Race](https://steamcommunity.com/sharedfiles/filedetails/?id=3473140562)
+- [Multiplayer Wolfein Race Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Race-Patch/releases/latest)
 - [Wolfein Allegiance](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233)
 - [Multiplayer Wolfein Allegiance Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Allegiance-Patch/releases/latest)
 - All required Wolfein Allegiance dependencies
@@ -54,6 +60,8 @@ The host and all connected clients should use the same:
 
 - RimWorld version
 - RimWorld Multiplayer version
+- Wolfein Race version
+- Multiplayer Wolfein Race Patch version
 - Wolfein Allegiance version
 - Multiplayer Wolfein Allegiance Patch version
 - Mod configuration
@@ -68,16 +76,20 @@ This patch is intended to provide multiplayer compatibility for [Wolfein Allegia
 It does not replace:
 
 - [RimWorld Multiplayer](https://steamcommunity.com/sharedfiles/filedetails/?id=2606448745)
+- [Wolfein Race](https://steamcommunity.com/sharedfiles/filedetails/?id=3473140562)
+- [Multiplayer Wolfein Race Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Race-Patch/releases/latest)
 - [Wolfein Allegiance](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233)
 
 ## Known Limitations
 
 - Compatibility may be affected by future RimWorld updates.
-- Compatibility may be affected by future updates to RimWorld Multiplayer or Wolfein Allegiance.
+- Compatibility may be affected by future updates to RimWorld Multiplayer, Wolfein Race, Multiplayer Wolfein Race Patch, or Wolfein Allegiance.
 
 ## Credits
 
 - [RimWorld Multiplayer on GitHub](https://github.com/rwmt/Multiplayer)
 - [RimWorld Multiplayer on Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2606448745)
+- [Wolfein Race on Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3473140562)
+- [Multiplayer Wolfein Race Patch](https://github.com/Keullaeseu/Multiplayer-Wolfein-Race-Patch)
 - [Wolfein Allegiance on Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3707497233)
 - [Multiplayer Wolfein Allegiance Patch](https://github.com/Keullaeseu)
