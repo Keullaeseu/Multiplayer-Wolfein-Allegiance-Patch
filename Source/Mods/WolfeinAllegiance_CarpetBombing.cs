@@ -36,7 +36,7 @@ public partial class WolfeinAllegiance
         try
         {
             var instanceType = __instance.GetType();
-            var firstTargetField = AccessTools.Field(instanceType, "firstTarget");
+            var firstTargetField = FieldInHierarchy(instanceType, "firstTarget");
             if (firstTargetField == null) return true;
 
             var firstTarget = (LocalTargetInfo)firstTargetField.GetValue(__instance);
@@ -54,15 +54,11 @@ public partial class WolfeinAllegiance
 
             if ((target.Cell - firstTarget.Cell).LengthHorizontal > maxBombLength) return true;
 
-            var caller = (Pawn)(AccessTools.Field(typeof(RoyalTitlePermitWorker), "caller")?.GetValue(__instance)
-                                ?? AccessTools.Field(instanceType, "caller")?.GetValue(__instance));
-            var map = (Map)(AccessTools.Field(typeof(RoyalTitlePermitWorker), "map")?.GetValue(__instance)
-                            ?? AccessTools.Field(instanceType, "map")?.GetValue(__instance));
-            var free = (bool)(AccessTools.Field(typeof(RoyalTitlePermitWorker), "free")?.GetValue(__instance)
-                              ?? AccessTools.Field(instanceType, "free")?.GetValue(__instance)
-                              ?? false);
+            var caller = (Pawn)FieldInHierarchy(instanceType, "caller")?.GetValue(__instance);
+            var map = (Map)FieldInHierarchy(instanceType, "map")?.GetValue(__instance);
+            var free = (bool)(FieldInHierarchy(instanceType, "free")?.GetValue(__instance) ?? false);
             var permitDef = ((RoyalTitlePermitWorker)__instance).def;
-            var faction = (Faction)AccessTools.Field(instanceType, "callingFaction")?.GetValue(__instance);
+            var faction = (Faction)FieldInHierarchy(instanceType, "callingFaction")?.GetValue(__instance);
 
             if (caller == null || map == null || permitDef == null) return true;
 
@@ -89,18 +85,13 @@ public partial class WolfeinAllegiance
         try
         {
             var workerType = worker.GetType();
-            AccessTools.Field(typeof(RoyalTitlePermitWorker), "caller")?.SetValue(worker, caller);
-            AccessTools.Field(workerType, "caller")?.SetValue(worker, caller);
-            AccessTools.Field(typeof(RoyalTitlePermitWorker), "map")?.SetValue(worker, map);
-            AccessTools.Field(workerType, "map")?.SetValue(worker, map);
-            AccessTools.Field(typeof(RoyalTitlePermitWorker), "free")?.SetValue(worker, free);
-            AccessTools.Field(workerType, "free")?.SetValue(worker, free);
-            if (faction != null) AccessTools.Field(workerType, "callingFaction")?.SetValue(worker, faction);
+            FieldInHierarchy(workerType, "caller")?.SetValue(worker, caller);
+            FieldInHierarchy(workerType, "map")?.SetValue(worker, map);
+            FieldInHierarchy(workerType, "free")?.SetValue(worker, free);
+            if (faction != null) FieldInHierarchy(workerType, "callingFaction")?.SetValue(worker, faction);
 
-            AccessTools.Field(workerType, "firstTarget")?.SetValue(worker, new LocalTargetInfo(start));
-            var spawnMethod = AccessTools.DeclaredMethod(workerType, "SpawnShuttle");
-            if (spawnMethod == null && workerType.BaseType != null)
-                spawnMethod = AccessTools.DeclaredMethod(workerType.BaseType, "SpawnShuttle");
+            FieldInHierarchy(workerType, "firstTarget")?.SetValue(worker, new LocalTargetInfo(start));
+            var spawnMethod = MethodInHierarchy(workerType, "SpawnShuttle");
 
             if (spawnMethod != null)
                 spawnMethod.Invoke(worker, [start, end]);
@@ -123,7 +114,7 @@ public partial class WolfeinAllegiance
                 Log.Error($"{LogPrefix} SyncedCarpetBombingSpawn permit consume failed: {exception}");
             }
 
-            AccessTools.Field(workerType, "firstTarget")?.SetValue(worker, LocalTargetInfo.Invalid);
+            FieldInHierarchy(workerType, "firstTarget")?.SetValue(worker, LocalTargetInfo.Invalid);
         }
         catch (Exception exception)
         {

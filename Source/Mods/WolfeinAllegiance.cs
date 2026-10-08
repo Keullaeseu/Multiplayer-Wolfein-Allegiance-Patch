@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Reflection;
+using HarmonyLib;
 using Multiplayer.API;
 using Multiplayer.Compat;
 using Verse;
@@ -72,6 +73,24 @@ public partial class WolfeinAllegiance
 
         try
         {
+            SyncVerbs();
+        }
+        catch (Exception exception)
+        {
+            Log.Error($"{LogPrefix} Failed syncing verbs: {exception}");
+        }
+
+        try
+        {
+            SyncTrackerResets();
+        }
+        catch (Exception exception)
+        {
+            Log.Error($"{LogPrefix} Failed syncing tracker resets: {exception}");
+        }
+
+        try
+        {
             PatchRandomNumberGeneration();
         }
         catch (Exception exception)
@@ -82,7 +101,8 @@ public partial class WolfeinAllegiance
         Log.Message($"{LogPrefix} Initialized.");
     }
 
-    private static void SyncMethodByName(string typeName, string methodName, bool cancelIfAnyArgNull = false)
+    private static void SyncMethodByName(string typeName, string methodName, bool cancelIfAnyArgNull = false,
+        SyncContext context = SyncContext.MapSelected)
     {
         var targetType = AccessTools.TypeByName(typeName);
         if (targetType == null)
@@ -98,7 +118,31 @@ public partial class WolfeinAllegiance
             return;
         }
 
-        var sync = MP.RegisterSyncMethod(method).SetContext(SyncContext.MapSelected);
+        var sync = MP.RegisterSyncMethod(method).SetContext(context);
         if (cancelIfAnyArgNull) sync.CancelIfAnyArgNull();
+    }
+
+    private static FieldInfo FieldInHierarchy(Type type, string fieldName)
+    {
+        while (type != null)
+        {
+            var field = AccessTools.DeclaredField(type, fieldName);
+            if (field != null) return field;
+            type = type.BaseType;
+        }
+
+        return null;
+    }
+
+    private static MethodInfo MethodInHierarchy(Type type, string methodName)
+    {
+        while (type != null)
+        {
+            var method = AccessTools.DeclaredMethod(type, methodName);
+            if (method != null) return method;
+            type = type.BaseType;
+        }
+
+        return null;
     }
 }

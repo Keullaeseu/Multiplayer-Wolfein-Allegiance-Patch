@@ -55,18 +55,14 @@ public partial class WolfeinAllegiance
         try
         {
             var instanceType = __instance.GetType();
-            var caller = (Pawn)AccessTools.Field(typeof(RoyalTitlePermitWorker), "caller")?.GetValue(__instance)
-                         ?? (Pawn)AccessTools.Field(instanceType, "caller")?.GetValue(__instance);
-            var map = (Map)AccessTools.Field(typeof(RoyalTitlePermitWorker), "map")?.GetValue(__instance)
-                      ?? (Map)AccessTools.Field(instanceType, "map")?.GetValue(__instance);
-            var free = (bool)(AccessTools.Field(typeof(RoyalTitlePermitWorker), "free")?.GetValue(__instance)
-                              ?? AccessTools.Field(instanceType, "free")?.GetValue(__instance)
-                              ?? false);
+            var caller = (Pawn)FieldInHierarchy(instanceType, "caller")?.GetValue(__instance);
+            var map = (Map)FieldInHierarchy(instanceType, "map")?.GetValue(__instance);
+            var free = (bool)(FieldInHierarchy(instanceType, "free")?.GetValue(__instance) ?? false);
             var permitDef = ((RoyalTitlePermitWorker)__instance).def;
 
             Faction faction = null;
-            var callingFactionField = AccessTools.Field(instanceType, "callingFaction")
-                                      ?? AccessTools.Field(instanceType, "calledFaction");
+            var callingFactionField = FieldInHierarchy(instanceType, "callingFaction")
+                                      ?? FieldInHierarchy(instanceType, "calledFaction");
             if (callingFactionField != null) faction = (Faction)callingFactionField.GetValue(__instance);
 
             if (caller == null || map == null || permitDef == null) return true;
@@ -92,17 +88,14 @@ public partial class WolfeinAllegiance
         try
         {
             var workerType = worker.GetType();
-            AccessTools.Field(typeof(RoyalTitlePermitWorker), "caller")?.SetValue(worker, caller);
-            AccessTools.Field(workerType, "caller")?.SetValue(worker, caller);
-            AccessTools.Field(typeof(RoyalTitlePermitWorker), "map")?.SetValue(worker, map);
-            AccessTools.Field(workerType, "map")?.SetValue(worker, map);
-            AccessTools.Field(typeof(RoyalTitlePermitWorker), "free")?.SetValue(worker, free);
-            AccessTools.Field(workerType, "free")?.SetValue(worker, free);
+            FieldInHierarchy(workerType, "caller")?.SetValue(worker, caller);
+            FieldInHierarchy(workerType, "map")?.SetValue(worker, map);
+            FieldInHierarchy(workerType, "free")?.SetValue(worker, free);
 
             if (faction != null)
             {
-                AccessTools.Field(workerType, "callingFaction")?.SetValue(worker, faction);
-                AccessTools.Field(workerType, "calledFaction")?.SetValue(worker, faction);
+                FieldInHierarchy(workerType, "callingFaction")?.SetValue(worker, faction);
+                FieldInHierarchy(workerType, "calledFaction")?.SetValue(worker, faction);
             }
 
             // Run outside interface so our prefix lets it through.

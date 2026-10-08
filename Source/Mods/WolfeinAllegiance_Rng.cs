@@ -15,9 +15,16 @@ public partial class WolfeinAllegiance
             "WolfeinAllegiance.CarpetBombingShuttle:Tick",
             "WolfeinAllegiance.QuestPart_RecurringRaid:CheckTick",
             "WolfeinAllegiance.QuestPart_RecurringRaid:ExecuteRaid",
+            "WolfeinAllegiance.QuestPart_RecurringRaid:Notify_QuestSignalReceived",
             "WolfeinAllegiance.QuestPart_TriggerFriendlyDrop:DoFriendlyDrop",
             "WolfeinAllegiance.QuestPart_WolfeinShuttleReinforcement:DoReinforcement",
             "WolfeinAllegiance.QuestPart_EnemyReinforcement:SpawnEnemyReinforcement",
+            "WolfeinAllegiance.QuestPart_TriggerRaid:ExecuteRaid",
+            "WolfeinAllegiance.QuestPart_ApplyPrepEffects_MegaCorp:Notify_QuestSignalReceived",
+            "WolfeinAllegiance.QuestPart_ApplyPrepEffects_Resistance:Notify_QuestSignalReceived",
+            "WolfeinAllegiance.LordToil_BreachToCell:UpdateAllDuties",
+            "WolfeinAllegiance.LordToil_FriendlyArtillery:UpdateAllDuties",
+            "WolfeinAllegiance.Verb_MechGuidance:TryCastShot",
             "WolfeinAllegiance.PermitWorker_RegularArmy:DeployArmy",
             "WolfeinAllegiance.PermitWorker_RegularArmy:DoSmoke",
             "WolfeinAllegiance.MapComponent_EscapeIntro:SpawnPawns",
@@ -25,6 +32,9 @@ public partial class WolfeinAllegiance
             "WolfeinAllegiance.LordToil_FriendlyArtillery:Init",
             "WolfeinAllegiance.QuestRewardHelper:AddItemsChoice",
             "WolfeinAllegiance.QuestRewardHelper:AddWolfeinEquipment",
+            "WolfeinAllegiance.QuestRewardHelper:AddGoodwillOption",
+            "WolfeinAllegiance.QuestRewardHelper:AddRoyalFavorOption",
+            "WolfeinAllegiance.QuestRewardHelper:RewardValueToFavor",
             "WolfeinAllegiance.CompUseEffect_HackDevice:DoEffect"
         ];
 
